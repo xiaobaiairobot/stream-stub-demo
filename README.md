@@ -1,12 +1,8 @@
 ## 实时数据治理范例工程
 
 ### 项目结构
-- operator：代理实现
-- foundations：平台通用模块
-- gateway：网关实现
-- router：本地开发调试用路由器实现
-- samples：示例服务
-- services：平台内功能微服务
+- sink：数据输出
+- source：数据源解析
 
 ### 版本信息
 1. 2020-08
