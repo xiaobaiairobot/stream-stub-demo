@@ -19,7 +19,8 @@ public class DemoSink extends AbstractSink {
 
   private final Logger logger = LoggerFactory.getLogger(DemoSink.class);
 
-  public DemoSink(Map<String, Object> config) {
+  public DemoSink(String config) {
+    logger.info("the config is : {}", config);
     // deal with config
   }
 

@@ -26,7 +26,7 @@ public class DemoTopicParser extends AbstractParser {
 
   private static final Logger logger = LoggerFactory.getLogger(DemoTopicParser.class);
 
-  DemoTopicParser(Schema schema, String config) {
+  public DemoTopicParser(Schema schema, String config) {
     super(schema, config);
   }
 
