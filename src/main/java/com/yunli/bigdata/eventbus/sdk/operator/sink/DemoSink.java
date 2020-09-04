@@ -26,9 +26,11 @@ public class DemoSink extends AbstractSink {
 
   @Override
   public void invoke(RowSet rowSet) throws Exception {
+    logger.info("receive the data is {}", rowSet.toString());
     DefaultRowSet defaultRowSet = (DefaultRowSet) rowSet;
     List<ColumnDesc> columns = defaultRowSet.getSchema().getColumns();
     for (Row row : defaultRowSet) {
+      logger.info("receive the row is {}", row.toCsv());
       StringBuilder sb = new StringBuilder();
       for (int i = 0; i < columns.size(); i++) {
         sb.append(String.format("%s:%s,", columns.get(i).getColumnName(), row.get(i)));
