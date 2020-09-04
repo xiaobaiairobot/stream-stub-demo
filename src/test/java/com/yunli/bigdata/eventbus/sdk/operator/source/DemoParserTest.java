@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.google.gson.Gson;
 import com.yunli.bigdata.eventbus.sdk.message.ColumnDesc;
 import com.yunli.bigdata.eventbus.sdk.message.ColumnType;
 import com.yunli.bigdata.eventbus.sdk.message.Row;
@@ -58,8 +59,10 @@ public class DemoParserTest {
     List<ColumnDesc> list = new ArrayList<>();
     for (int i = 0; i < listColumn.length; i++) {
       String type = listType[i];
-      list.add(new ColumnDesc(listColumn[i], type.equals("string") ? ColumnType.STRING : ColumnType.LONG));
+      list.add(new ColumnDesc(listColumn[i].toLowerCase(), type.equals("string") ? ColumnType.STRING : ColumnType.LONG));
     }
+    Gson gson = new Gson();
+    System.out.println(gson.toJson(list));
     return list;
   }
 }

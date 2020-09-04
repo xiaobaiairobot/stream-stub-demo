@@ -29,7 +29,7 @@ import com.yunli.bigdata.eventbus.sdk.util.TypeConvertUtil;
 public class OperatorConfigTest {
 
   @Test
-  public void testGenerateConfig(){
+  public void testGenerateConfig() {
     Gson gson = new Gson();
 
     OperatorConfig csvParser = new OperatorConfig();
@@ -43,7 +43,7 @@ public class OperatorConfigTest {
     OperatorConfig ruleParser = new OperatorConfig();
     ruleParser.setType(OperatorType.RULE);
     SpringELRuleConfig ruleConfig = new SpringELRuleConfig();
-    ruleConfig.setExpression(" p[0][0] > 110 and p[0][1] matches 'o2lz-4.*' ");
+    ruleConfig.setExpression(" #biz_type = '3' ");
     ruleParser.setConfig(ObjectUtil.objToMap(ruleConfig));
     List<OperatorConfig> childSink = new ArrayList<>();
 
@@ -58,16 +58,15 @@ public class OperatorConfigTest {
     sinkPrint.setConfig(ObjectUtil.objToMap(sinkPrintConfig));
     childSink.add(sinkPrint);
 
-    // ruleParser.setChildren(childSink);
-    // childRule.add(ruleParser);
+    ruleParser.setChildren(childSink);
+    childRule.add(ruleParser);
+    csvParser.setChildren(childRule);
     // csvParser.setChildren(childRule);
-    csvParser.setChildren(childSink);
 
     String json = gson.toJson(csvParser);
     System.out.println(json);
     System.out.println("---------");
-    OperatorConfig convertConfig = gson.fromJson(json,OperatorConfig.class);
+    OperatorConfig convertConfig = gson.fromJson(json, OperatorConfig.class);
     System.out.println(convertConfig.toString());
-
   }
 }

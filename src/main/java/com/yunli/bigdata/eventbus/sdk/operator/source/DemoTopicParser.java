@@ -48,6 +48,9 @@ public class DemoTopicParser extends AbstractParser {
       }
       i++;
     }
+    if(i <= 1){
+      logger.warn("数据行数不符合要求:{}", strMsg);
+    }
     return rowSet;
   }
 
